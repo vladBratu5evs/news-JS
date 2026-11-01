@@ -1,6 +1,7 @@
 {
     "name": "NewsJS",
     "version": "1.0.0",
+    "type": "module",
     "description": "",
     "main": "webpack.base.config.js",
     "scripts": {
