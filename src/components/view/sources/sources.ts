@@ -1,20 +1,28 @@
-import './sources.css';
+import { NewsSource } from '../../controller/interfaces.js';
 
-class Sources {
-    draw(data) {
+export class Sources {
+    public draw(data: NewsSource[]): void {
         const fragment = document.createDocumentFragment();
-        const sourceItemTemp = document.querySelector('#sourceItemTemp');
+        const sourceItemTemp = document.querySelector('#sourceItemTemp') as HTMLTemplateElement | null;
+
+        if (!sourceItemTemp) return;
 
         data.forEach((item) => {
-            const sourceClone = sourceItemTemp.content.cloneNode(true);
+            const sourceClone = sourceItemTemp.content.cloneNode(true) as DocumentFragment;
+            const itemName = sourceClone.querySelector('.source__item-name');
+            const itemContainer = sourceClone.querySelector('.source__item');
 
-            sourceClone.querySelector('.source__item-name').textContent = item.name;
-            sourceClone.querySelector('.source__item').setAttribute('data-source-id', item.id);
+            if (itemName) itemName.textContent = item.name;
+            if (itemContainer && item.id) itemContainer.setAttribute('data-source-id', item.id);
 
-            fragment.append(sourceClone);
+            fragment.appendChild(sourceClone);
         });
 
-        document.querySelector('.sources').append(fragment);
+        const sourcesContainer = document.querySelector('.sources');
+        if (sourcesContainer) {
+            sourcesContainer.innerHTML = '';
+            sourcesContainer.appendChild(fragment);
+        }
     }
 }
 
