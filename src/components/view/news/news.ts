@@ -1,4 +1,4 @@
-import { NewsArticle } from '../../controller/interfaces.js';
+import type { NewsArticle } from '../../controller/interfaces.js';
 
 export class News {
     public draw(data: NewsArticle[]): void {

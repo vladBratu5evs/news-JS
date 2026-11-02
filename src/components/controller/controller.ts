@@ -1,5 +1,5 @@
 import AppLoader from './appLoader.js'; // 1. Added explicit extension
-import { SourcesResponse, EverythingResponse } from './interfaces.js';
+import type{ SourcesResponse, EverythingResponse } from './interfaces.js';
 
 class AppController extends AppLoader {
     public getSources(callback: (data: SourcesResponse) => void): void {

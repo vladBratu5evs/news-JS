@@ -1,6 +1,6 @@
 import News from './news/news.js';
 import Sources from './sources/sources.js';
-import { EverythingResponse, SourcesResponse } from '../controller/interfaces.js';
+import type { EverythingResponse, SourcesResponse } from '../controller/interfaces.js';
 
 export class AppView {
         private news: News;

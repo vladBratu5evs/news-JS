@@ -1,4 +1,4 @@
-import { NewsSource } from '../../controller/interfaces.js';
+import type { NewsSource } from '../../controller/interfaces.js';
 
 export class Sources {
     public draw(data: NewsSource[]): void {

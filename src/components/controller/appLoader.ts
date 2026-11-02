@@ -1,5 +1,5 @@
 import Loader from './loader.js';
-import { SourcesResponse, EverythingResponse } from './interfaces.js';
+import type{ SourcesResponse, EverythingResponse } from './interfaces.js';
 
 class AppLoader extends Loader {
     constructor() {

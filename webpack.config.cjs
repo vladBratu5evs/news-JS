@@ -14,13 +14,24 @@ const baseConfig = {
             },
             {
                 test: /\.tsx?$/,
-                use: 'ts-loader',
+                use: {
+                    loader: 'ts-loader',
+                    options: {
+                        compilerOptions: {
+                            declaration: false,
+                            declarationMap: false,
+                        },
+                    },
+                },
                 exclude: /node_modules/,
             },
         ],
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.js'],
+        extensionAlias: {
+            '.js': ['.ts', '.tsx', '.js'],
+        },
     },
     output: {
         filename: 'index.js',
@@ -38,7 +49,9 @@ const baseConfig = {
 
 module.exports = ({ mode }) => {
     const isProductionMode = mode === 'prod';
-    const envConfig = isProductionMode ? require('./webpack.prod.config') : require('./webpack.dev.config');
+    const envConfig = isProductionMode
+        ? require('./webpack.prod.config.cjs')
+        : require('./webpack.dev.config.cjs');
 
     return merge(baseConfig, envConfig);
 };

@@ -1,4 +1,4 @@
-import { RequestOptions } from './interfaces.js';
+import type { RequestOptions } from './interfaces.js';
 
 class Loader {
     private baseLink: string;
