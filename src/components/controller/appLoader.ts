@@ -1,5 +1,5 @@
 import Loader from './loader.js';
-import type{ SourcesResponse, EverythingResponse } from './interfaces.js';
+import type { SourcesResponse, EverythingResponse } from './interfaces.js';
 
 class AppLoader extends Loader {
     constructor() {
@@ -18,9 +18,9 @@ class AppLoader extends Loader {
         callback: (data: EverythingResponse) => void
     ): void;
 
-    protected override getResp(
+    protected override getResp<T>(
         { endpoint, options }: { endpoint: string; options?: Record<string, string> },
-        callback: (data: any) => void
+        callback: (data: T) => void
     ): void {
         super.getResp({ endpoint, options }, callback);
     }

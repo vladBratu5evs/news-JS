@@ -11,7 +11,7 @@ class Loader {
 
     protected getResp<T>(
         { endpoint, options }: { endpoint: string; options?: RequestOptions },
-        callback: (data: T | any) => void = () => {}
+        callback: (data: T) => void = () => {}
     ): void {
         this.load('GET', endpoint, callback, options);
     }
@@ -37,12 +37,7 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    private load<T>(
-        method: string,
-        endpoint: string,
-        callback: (data: T) => void,
-        options: RequestOptions = {}
-    ): void {
+    private load<T>(method: string, endpoint: string, callback: (data: T) => void, options: RequestOptions = {}): void {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())
